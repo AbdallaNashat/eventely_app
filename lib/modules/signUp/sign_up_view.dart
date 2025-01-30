@@ -4,14 +4,19 @@ import 'package:eventely/core/theme/color_palette.dart';
 import 'package:eventely/core/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatelessWidget {
-  const SignIn({super.key});
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context);
     var theme = Theme.of(context);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorPalette.white,
+        title: const Text("Register"),
+        centerTitle: true,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -20,6 +25,19 @@ class SignIn extends StatelessWidget {
             AppAssets.eventlyLogo,
             height: size.size.height * 0.2,
           ),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            child: CustomTextFormField(
+              prefixIcon: ImageIcon(
+                AssetImage(AppAssets.personIcon),
+              ),
+              hintText: "Name",
+              hintColor: ColorPalette.generalGrayColor,
+            ),
+          ),
+
+
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: CustomTextFormField(
@@ -42,25 +60,21 @@ class SignIn extends StatelessWidget {
               hintColor: ColorPalette.generalGrayColor,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, PagesRouteName.forgetPassword);
-                },
-                child: Text("Forget Password?",
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                          color: ColorPalette.primaryColor,
-                          fontWeight: FontWeight.w700,
-                          fontSize: 16,
-                          decoration: TextDecoration.underline,
-                          decorationColor: ColorPalette.primaryColor,
-                        )),
+
+          const Padding(
+            padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            child: CustomTextFormField(
+              isPassword: true,
+              maxLines: 1,
+              prefixIcon: ImageIcon(
+                AssetImage(AppAssets.lockIcon),
               ),
+              hintText: "Confirm Password",
+              hintColor: ColorPalette.generalGrayColor,
             ),
           ),
+
+
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 16),
             child: ElevatedButton(
@@ -73,7 +87,7 @@ class SignIn extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   )),
               child: Text(
-                "Login",
+                "Create Account",
                 style: theme.textTheme.titleLarge?.copyWith(
                   color: ColorPalette.white,
                   fontWeight: FontWeight.w700,
@@ -87,16 +101,17 @@ class SignIn extends StatelessWidget {
               textAlign: TextAlign.center,
               TextSpan(children: [
                 TextSpan(
-                  text: "Don’t Have Account ?  ",
+                  text: "Already Have Account ?  ",
                   style: theme.textTheme.titleMedium,
                 ),
                 WidgetSpan(
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, PagesRouteName.signUp);
+                      Navigator.pushNamed(context, PagesRouteName.signIn);
+
                     },
                     child: Text(
-                      "Create Account",
+                      "Login",
                       style: theme.textTheme.titleMedium?.copyWith(
                         color: ColorPalette.primaryColor,
                         decoration: TextDecoration.underline,
@@ -107,62 +122,6 @@ class SignIn extends StatelessWidget {
                   ),
                 ),
               ]
-              ),
-            ),
-          ),
-          Row(
-            children: [
-              const Expanded(
-                child: Divider(
-                  color: ColorPalette.primaryColor,
-                  thickness: 2,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-              ),
-              Text("OR",
-              style: theme.textTheme.titleMedium?.copyWith(
-                color: ColorPalette.primaryColor,
-              ),
-              ),
-              const Expanded(
-                child: Divider(
-                  color: ColorPalette.primaryColor,
-                  thickness: 2,
-                  indent: 20,
-                  endIndent: 20,
-                ),
-              ),
-
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: ColorPalette.white,
-                  padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                    side: const BorderSide(
-                      color: ColorPalette.primaryColor
-                    )
-                  )),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(AppAssets.googleIcon),
-                  SizedBox(width: 10,),
-                  Text(
-                    "Sign In With Google",
-                    style: theme.textTheme.titleLarge?.copyWith(
-                      color: ColorPalette.primaryColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
               ),
             ),
           ),

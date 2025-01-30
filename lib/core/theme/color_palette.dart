@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ColorPalette{
+abstract class ColorPalette{
 
   static const Color primaryColor = Color(0xFF5669ff);
 

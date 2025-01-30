@@ -1,6 +1,9 @@
 import 'package:eventely/core/routes/pages_route_name.dart';
+import 'package:eventely/layout_view/layout_view.dart';
+import 'package:eventely/modules/forgetPassword/forget_password_view.dart';
 import 'package:eventely/modules/onBoarding/on_boarding_view.dart';
 import 'package:eventely/modules/signIn/sign_in.dart';
+import 'package:eventely/modules/signUp/sign_up_view.dart';
 import 'package:eventely/modules/spalsh/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -24,6 +27,25 @@ abstract class AppRoutes {
         builder: (context) => const SignIn(),
           settings : settings,
       );
+
+    case PagesRouteName.signUp:
+      return MaterialPageRoute(
+        builder: (context) => const SignUp(),
+        settings : settings,
+      );
+
+    case PagesRouteName.forgetPassword:
+      return MaterialPageRoute(
+        builder: (context) => const ForgetPasswordView(),
+        settings : settings,
+      );
+
+    case PagesRouteName.layoutView:
+      return MaterialPageRoute(
+        builder: (context) => const LayoutView(),
+        settings : settings,
+      );
+
 
     default:  return MaterialPageRoute(
       builder: (context) => const SplashView(),
