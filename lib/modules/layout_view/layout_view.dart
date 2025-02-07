@@ -1,5 +1,11 @@
+import 'package:eventely/core/routes/pages_route_name.dart';
 import 'package:eventely/core/theme/color_palette.dart';
+import 'package:eventely/modules/layout_view/home_tab.dart';
+import 'package:eventely/modules/layout_view/map_tab.dart';
+import 'package:eventely/modules/layout_view/profile_tab.dart';
 import 'package:flutter/material.dart';
+
+import 'favorite_tab.dart';
 
 class LayoutView extends StatefulWidget {
   const LayoutView({super.key});
@@ -10,13 +16,22 @@ class LayoutView extends StatefulWidget {
 
 class _LayoutViewState extends State<LayoutView> {
   int selectedIndex = 0;
+  List<Widget> tabs=[
+    const HomeTab(),
+    const MapTab(),
+    const SizedBox(),
+    const FavoriteTab(),
+    const ProfileTab(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, PagesRouteName.createEvent);
+        },
         shape: const CircleBorder(
             side: BorderSide(
           color: ColorPalette.white,
@@ -29,12 +44,12 @@ class _LayoutViewState extends State<LayoutView> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          onTap: _onItemTab,
           type: BottomNavigationBarType.fixed,
           backgroundColor: ColorPalette.primaryColor,
           selectedItemColor: ColorPalette.white,
           unselectedItemColor: ColorPalette.white,
           currentIndex: selectedIndex,
+          onTap: _onItemTab,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.home_outlined),
@@ -61,6 +76,7 @@ class _LayoutViewState extends State<LayoutView> {
               activeIcon: Icon(Icons.person),
             ),
           ]),
+      body: tabs[selectedIndex],
     );
   }
 

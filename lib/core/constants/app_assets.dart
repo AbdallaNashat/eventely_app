@@ -12,5 +12,9 @@ abstract class AppAssets {
   static const String personIcon = "assets/images/personIcon.png";
   static const String egyptIcon = "assets/images/EGIcon.png";
   static const String lrIcon = "assets/images/LRIcon.png";
+  static const String sunLogo = "assets/icons/Sun.png";
+  static const String compassLogo = "assets/icons/Compass.png";
+  static const String bikeLogo = "assets/icons/bike.png";
+
 
 }

@@ -1,11 +1,13 @@
 import 'package:eventely/core/routes/pages_route_name.dart';
-import 'package:eventely/layout_view/layout_view.dart';
+import 'package:eventely/modules/create_event/create_event.dart';
 import 'package:eventely/modules/forgetPassword/forget_password_view.dart';
 import 'package:eventely/modules/onBoarding/on_boarding_view.dart';
 import 'package:eventely/modules/signIn/sign_in.dart';
 import 'package:eventely/modules/signUp/sign_up_view.dart';
 import 'package:eventely/modules/spalsh/splash_view.dart';
 import 'package:flutter/material.dart';
+
+import '../../modules/layout_view/layout_view.dart';
 
 abstract class AppRoutes {
  static Route onGeneratedRoute(RouteSettings settings){
@@ -46,6 +48,11 @@ abstract class AppRoutes {
         settings : settings,
       );
 
+    case PagesRouteName.createEvent:
+      return MaterialPageRoute(
+        builder: (context) => const CreateEvent(),
+        settings : settings,
+      );
 
     default:  return MaterialPageRoute(
       builder: (context) => const SplashView(),

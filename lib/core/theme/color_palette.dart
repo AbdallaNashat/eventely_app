@@ -10,4 +10,8 @@ abstract class ColorPalette{
 
   static const Color dark = Color(0xFF101127);
 
+  static const Color black = Color(0xFF1C1C1C);
+
+
+
 }
