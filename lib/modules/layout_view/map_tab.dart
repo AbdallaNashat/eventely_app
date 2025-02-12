@@ -1,3 +1,4 @@
+import 'package:eventely/core/routes/pages_route_name.dart';
 import 'package:flutter/material.dart';
 
 class MapTab extends StatelessWidget {
@@ -5,8 +6,12 @@ class MapTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.black,
+    return  Scaffold(
+      body: SafeArea(
+        child: ElevatedButton(onPressed: (){
+          Navigator.pushNamed(context, PagesRouteName.signIn);
+        }, child: const Text("Sign in")),
+      ),
     );
   }
 }

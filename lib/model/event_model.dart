@@ -1,4 +1,3 @@
-
 class EventDataModel {
 
   static const String collectionName = "EventsCollection";
@@ -45,4 +44,6 @@ class EventDataModel {
       "IsFavorite": isFavorite,
     };
   }
+
+
 }

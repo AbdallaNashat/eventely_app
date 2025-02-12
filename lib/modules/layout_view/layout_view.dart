@@ -4,8 +4,8 @@ import 'package:eventely/modules/layout_view/home_tab.dart';
 import 'package:eventely/modules/layout_view/map_tab.dart';
 import 'package:eventely/modules/layout_view/profile_tab.dart';
 import 'package:flutter/material.dart';
-
 import 'favorite_tab.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LayoutView extends StatefulWidget {
   const LayoutView({super.key});
@@ -15,6 +15,7 @@ class LayoutView extends StatefulWidget {
 }
 
 class _LayoutViewState extends State<LayoutView> {
+
   int selectedIndex = 0;
   List<Widget> tabs=[
     const HomeTab(),
@@ -26,6 +27,8 @@ class _LayoutViewState extends State<LayoutView> {
 
   @override
   Widget build(BuildContext context) {
+    var locale = AppLocalizations.of(context)!;
+
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
@@ -45,35 +48,34 @@ class _LayoutViewState extends State<LayoutView> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          backgroundColor: ColorPalette.primaryColor,
           selectedItemColor: ColorPalette.white,
           unselectedItemColor: ColorPalette.white,
           currentIndex: selectedIndex,
           onTap: _onItemTab,
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              label: "Home",
-              activeIcon: Icon(Icons.home),
+              icon: const Icon(Icons.home_outlined),
+              label: locale.home,
+              activeIcon: const Icon(Icons.home),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.location_on_outlined),
-              label: "Map",
-              activeIcon: Icon(Icons.location_on),
+             BottomNavigationBarItem(
+              icon: const Icon(Icons.location_on_outlined),
+              label: locale.map,
+              activeIcon: const Icon(Icons.location_on),
             ),
-            BottomNavigationBarItem(
+             const BottomNavigationBarItem(
               icon: SizedBox.shrink(),
               label: "",
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border_outlined),
-              label: "Favorites",
-              activeIcon: Icon(Icons.favorite),
+             BottomNavigationBarItem(
+              icon: const Icon(Icons.favorite_border_outlined),
+              label: locale.favorite,
+              activeIcon: const Icon(Icons.favorite),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.person_outline),
-              label: "Profile",
-              activeIcon: Icon(Icons.person),
+             BottomNavigationBarItem(
+              icon: const Icon(Icons.person_outline),
+              label: locale.profile ,
+              activeIcon: const Icon(Icons.person),
             ),
           ]),
       body: tabs[selectedIndex],

@@ -5,7 +5,6 @@ class TabBarWidget extends StatelessWidget {
   final String text;
   final IconData ? icon;
   final bool isSelected;
-  final String? image;
 
 
   const TabBarWidget({
@@ -13,7 +12,6 @@ class TabBarWidget extends StatelessWidget {
     required this.text,
     required this.icon,
     required this.isSelected,
-    this.image,
   }
   );
 

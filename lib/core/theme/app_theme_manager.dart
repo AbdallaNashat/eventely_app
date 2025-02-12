@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 abstract class AppThemeManager{
   static ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: ColorPalette.white,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       centerTitle: true,
       color: ColorPalette.white,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       type: BottomNavigationBarType.fixed,
       landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
       selectedItemColor: ColorPalette.white,
@@ -21,8 +21,22 @@ abstract class AppThemeManager{
   );
 
 
-
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: ColorPalette.dark,
+      scaffoldBackgroundColor: ColorPalette.dark,
+      appBarTheme: const AppBarTheme(
+        centerTitle: true,
+        color: ColorPalette.dark,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        type: BottomNavigationBarType.fixed,
+        landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
+        selectedItemColor: ColorPalette.white,
+        unselectedItemColor: ColorPalette.white,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+        backgroundColor: ColorPalette.dark,
+      ),
+
   );
+
 }

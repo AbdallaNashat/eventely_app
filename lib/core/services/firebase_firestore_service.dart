@@ -16,6 +16,7 @@ class FirebaseFirestoreService {
     try {
       final collectionRef = getCollectionRef();
       var docRef = collectionRef.doc();
+
       eventData.eventId = docRef.id;
       docRef.set(eventData);
       return Future.value(true);
@@ -36,6 +37,7 @@ class FirebaseFirestoreService {
     }).toList();
 
     return eventDataList;
+
   }
 
   static Stream<QuerySnapshot<EventDataModel>> getStreamData(
@@ -46,5 +48,40 @@ class FirebaseFirestoreService {
     );
 
     return collectionRef.snapshots();
+  }
+
+  static Stream<QuerySnapshot<EventDataModel>> getStreamFavoriteData() {
+    var collectionRef = getCollectionRef().where(
+      "isFavorite",
+      isEqualTo: true,
+    );
+
+    return collectionRef.snapshots();
+  }
+
+  static Future<bool> deleteEvent(EventDataModel data) async {
+    try {
+      var collectionRef = getCollectionRef();
+      var docRef = collectionRef.doc(data.eventId);
+      docRef.delete();
+
+      return Future.value(true);
+    } catch (error) {
+      return Future.value(false);
+    }
+  }
+
+  static Future<bool> updateEvent(EventDataModel data) async {
+    try {
+      var collectionRef = getCollectionRef();
+      var docRef = collectionRef.doc(data.eventId);
+      docRef.update(
+        data.toFirestore(),
+      );
+
+      return Future.value(true);
+    } catch (error) {
+      return Future.value(false);
+    }
   }
 }
